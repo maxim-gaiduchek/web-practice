@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета</title>
+    <link rel="stylesheet" th:href="@{/styles/form.css}">
+</head>
+
+<body>
+<center>
+    <form action="#" th:action="@{/results}" th:object="${record}" method="POST">
+        <h1>Заповніть поля анкети</h1>
+        <label>Ваше ім'я: <input type="text" th:field="*{name}" required></label>
+        <br>
+        <label>Ваше прізвище: <input type="text" th:field="*{surname}" required></label>
+        <br>
+        <label>Ваша стать: </label>
+        <input type="radio" name="sex" value="male" th:field="*{sex}" required>чоловік
+        <input type="radio" name="sex" value="female" th:field="*{sex}" required>жінка
+        <br>
+        <label>Послугами якої сотової компанії Ви користуєтися: </label>
+        <br>
+        <input type="checkbox" name="operator" value="K" th:field="*{operators}">KyivStar
+        <input type="checkbox" name="operator" value="M" th:field="*{operators}">MTS
+        <input type="checkbox" name="operator" value="L" th:field="*{operators}">Life:)
+        <input type="checkbox" name="operator" value="P" th:field="*{operators}">People Net
+        <input type="checkbox" name="operator" value="U" th:field="*{operators}">Utel
+        <br>
+        <label>Залиште Ваші пропозиції щодо якості обслуговування</label>
+        <br>
+        <textarea cols="50" rows="3"></textarea>
+        <br>
+        <input type="submit" value="Надіслати анкету">
+        <input type="reset" value="Очистити бланк">
+    </form>
+</center>
+</body>
+
+</html>

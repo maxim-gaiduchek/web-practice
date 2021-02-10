@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика</title>
+    <link rel="stylesheet" th:href="@{/styles/results.css}">
+</head>
+
+<body>
+    <p>Дякую, що пройшли опитування!</p>
+
+    <h1>Статистика</h1>
+    <p>Усього опитаних: [[${results.count()}]]</p>
+    <p>Чоловіків: [[${results.getMalesCount()}]] ([[${results.getMalesPercentage()}]]%)</p>
+    <p>Жінок: [[${results.getFemalesCount()}]] ([[${results.getFemalesPercentage()}]]%)</p>
+
+    <h2>Оператори</h2>
+    <p>KyivStar: [[${results.getOperatorCount("K")}]] ([[${results.getOperatorPercentage("K")}]]%)</p>
+    <p>MTS: [[${results.getOperatorCount("M")}]] ([[${results.getOperatorPercentage("M")}]]%)</p>
+    <p>Life:): [[${results.getOperatorCount("L")}]] ([[${results.getOperatorPercentage("L")}]]%)</p>
+    <p>People Net: [[${results.getOperatorCount("P")}]] ([[${results.getOperatorPercentage("P")}]]%)</p>
+    <p>Utel: [[${results.getOperatorCount("U")}]] ([[${results.getOperatorPercentage("U")}]]%)</p>
+</body>
+</html>
