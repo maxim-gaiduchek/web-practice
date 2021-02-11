@@ -11,15 +11,15 @@
     <p>Дякую, що пройшли опитування!</p>
 
     <h1>Статистика</h1>
-    <p>Усього опитаних: [[${results.count()}]]</p>
-    <p>Чоловіків: [[${results.getMalesCount()}]] ([[${results.getMalesPercentage()}]]%)</p>
-    <p>Жінок: [[${results.getFemalesCount()}]] ([[${results.getFemalesPercentage()}]]%)</p>
+    <p>Усього опитаних: [[${statistics.getCount()}]]</p>
+    <p>Чоловіків: [[${statistics.getMalesCount()}]] ([[${statistics.getMalesPercentage()}]]%)</p>
+    <p>Жінок: [[${statistics.getFemalesCount()}]] ([[${statistics.getFemalesPercentage()}]]%)</p>
 
     <h2>Оператори</h2>
-    <p>KyivStar: [[${results.getOperatorCount("K")}]] ([[${results.getOperatorPercentage("K")}]]%)</p>
-    <p>MTS: [[${results.getOperatorCount("M")}]] ([[${results.getOperatorPercentage("M")}]]%)</p>
-    <p>Life:): [[${results.getOperatorCount("L")}]] ([[${results.getOperatorPercentage("L")}]]%)</p>
-    <p>People Net: [[${results.getOperatorCount("P")}]] ([[${results.getOperatorPercentage("P")}]]%)</p>
-    <p>Utel: [[${results.getOperatorCount("U")}]] ([[${results.getOperatorPercentage("U")}]]%)</p>
+    <p>KyivStar: [[${statistics.getOperatorCount("K")}]] ([[${statistics.getOperatorPercentage("K")}]]%)</p>
+    <p>MTS: [[${statistics.getOperatorCount("M")}]] ([[${statistics.getOperatorPercentage("M")}]]%)</p>
+    <p>Life:): [[${statistics.getOperatorCount("L")}]] ([[${statistics.getOperatorPercentage("L")}]]%)</p>
+    <p>People Net: [[${statistics.getOperatorCount("P")}]] ([[${statistics.getOperatorPercentage("P")}]]%)</p>
+    <p>Utel: [[${statistics.getOperatorCount("U")}]] ([[${statistics.getOperatorPercentage("U")}]]%)</p>
 </body>
 </html>

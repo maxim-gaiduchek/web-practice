@@ -1,7 +1,10 @@
 package app.controllers;
 
-import app.model.ResultsCalculator;
+import app.datasource.JpaService;
+import app.model.Answer;
+import app.model.Statistics;
 import app.model.UserRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +18,9 @@ import java.util.Map;
 @Controller
 public class WebController {
 
+    @Autowired
+    private JpaService service;
+
     private final Map<String, UserRecord> records = new HashMap<>();
 
     @RequestMapping("/")
@@ -25,21 +31,17 @@ public class WebController {
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.GET)
-    private String results(Model model, HttpServletRequest servletRequest) {
-        model.addAttribute("results", new ResultsCalculator(records.values()));
-        System.out.println(servletRequest.getRemoteAddr());
+    private String results(Model model) {
+        model.addAttribute("statistics", new Statistics(service));
+
         return "results";
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.POST)
     private String results(@ModelAttribute UserRecord record, HttpServletRequest servletRequest, Model model) {
-        records.put(record.getName() + " " + record.getSurname(), record);
+        service.saveAnswer(new Answer(servletRequest, record));
 
-        System.out.println(record);
-        System.out.println(records);
-        System.out.println(servletRequest);
-
-        return results(model, servletRequest);
+        return results(model);
     }
 
     // TODO: 07.02.2021 ip address check, enums
