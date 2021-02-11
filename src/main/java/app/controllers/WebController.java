@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,20 +25,21 @@ public class WebController {
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.GET)
-    private String results(Model model) {
+    private String results(Model model, HttpServletRequest servletRequest) {
         model.addAttribute("results", new ResultsCalculator(records.values()));
-
+        System.out.println(servletRequest.getRemoteAddr());
         return "results";
     }
 
     @RequestMapping(value = "/results", method = RequestMethod.POST)
-    private String results(@ModelAttribute UserRecord record, Model model) {
+    private String results(@ModelAttribute UserRecord record, HttpServletRequest servletRequest, Model model) {
         records.put(record.getName() + " " + record.getSurname(), record);
 
         System.out.println(record);
         System.out.println(records);
+        System.out.println(servletRequest);
 
-        return results(model);
+        return results(model, servletRequest);
     }
 
     // TODO: 07.02.2021 ip address check, enums
