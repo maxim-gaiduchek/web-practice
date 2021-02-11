@@ -11,6 +11,6 @@ public interface AnswersRepository extends JpaRepository<Answer, Integer> {
     @Query("SELECT COUNT(*) FROM Answer a WHERE sex = 'MALE'")
     int countMale();
 
-    @Query("SELECT COUNT(*) FROM Answer a WHERE operators = CONCAT('%', ?1, '%')")
+    @Query("SELECT COUNT(*) FROM Answer a WHERE operators LIKE CONCAT('%', ?1, '%')")
     int countOperator(String operator);
 }
