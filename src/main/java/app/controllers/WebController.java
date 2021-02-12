@@ -12,16 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class WebController {
 
     @Autowired
     private JpaService service;
-
-    private final Map<String, UserRecord> records = new HashMap<>();
 
     @RequestMapping("/")
     private String form(Model model) {
@@ -44,5 +40,5 @@ public class WebController {
         return results(model);
     }
 
-    // TODO: 07.02.2021 ip address check, enums
+    // TODO: 07.02.2021 ip address check or cookies, enums
 }
